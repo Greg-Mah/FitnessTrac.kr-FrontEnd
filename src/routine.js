@@ -4,7 +4,7 @@ import Activity from './activity';
 const Routine = (props) => {
     const routine=props.routine;
     const token=props.token;
-    const user=props.user;
+
 
 
     return <>

@@ -1,4 +1,4 @@
-const {API_URL_STRING='http://localhost:3000/api/'} = process.env;
+const {API_URL_STRING='https://fitnesstrac-kr.herokuapp.com/api/'} = process.env;
 //const test="https://protected-earth-18251.herokuapp.com/api/";
 const APIFetch = async (
     {

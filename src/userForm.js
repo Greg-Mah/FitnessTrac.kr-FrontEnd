@@ -75,6 +75,7 @@ const UserForm = (props) =>
                 }
             }
             );
+            console.log(response);
 
             if(response.token)
             {
@@ -82,14 +83,14 @@ const UserForm = (props) =>
                 setMessage("You are logged in.");
                 setUser(
                 {
-                    id:response.id,
-                    name:response.username
+                    id:response.user.id,
+                    name:response.user.username
                 });
                 if(remember)
                 {
                     localStorage.setItem("token",response.token);
-                    localStorage.setItem("username",response.username);
-                    localStorage.setItem("id",response.id);
+                    localStorage.setItem("username",response.user.username);
+                    localStorage.setItem("id",response.user.id);
                 }
             }
             else

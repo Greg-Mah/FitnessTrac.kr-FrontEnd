@@ -3,7 +3,7 @@ import React from 'react';
 const Activity = (props) => 
 {
     const activity=props.activity;
-    const token=props.token;
+
 
     return <>
         <h4>{activity.name}</h4>

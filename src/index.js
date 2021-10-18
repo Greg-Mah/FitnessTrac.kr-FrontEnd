@@ -16,7 +16,7 @@ const App = () => {
     {
         id:localStorage.getItem("id"),
         name:localStorage.getItem("username")
-    }||"");
+    }||null);
 
 
 

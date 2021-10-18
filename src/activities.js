@@ -3,9 +3,8 @@ import { useState } from 'react/cjs/react.development';
 import Activity from './activity';
 import APIFetch from './api';
 
-const Activities = (props) => 
+const Activities = () => 
 {
-    const token=props.token;
     const [activities,setActivities]=useState([])
     useEffect(()=>
     {
@@ -23,7 +22,7 @@ const Activities = (props) =>
 
     return <>{activities.map((activity)=>
         {
-            return <Activity activity={activity} token={token}></Activity>
+            return <Activity key={activity.id} activity={activity} ></Activity>
         })}
     </>;
 }
