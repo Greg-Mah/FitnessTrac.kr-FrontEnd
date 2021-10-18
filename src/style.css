@@ -85,7 +85,7 @@ button
 
 .Activity, .Routine
 {
-    flex-basis: 90%;
+    flex-basis: 95%;
     background-color:rgb(225,225,225);
     margin:10px;
     border-radius: 5px;
@@ -98,6 +98,12 @@ button
     background-color:rgb(255,255,255);
     margin:10px;
     border-radius: 5px;
+}
+
+.Scrollbox
+{
+    max-height: 500px;
+    overflow:scroll;
 }
 
 h1

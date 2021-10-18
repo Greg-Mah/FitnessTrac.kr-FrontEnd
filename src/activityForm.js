@@ -55,7 +55,7 @@ const ActivityForm = (props) =>
         }
     }}>
 
-        <div className="scrollbox">
+        <div className="Scrollbox">
             {activities.map((activity,idx)=>
             {
                 activity.idx=idx;
