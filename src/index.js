@@ -35,7 +35,7 @@ const App = () => {
             </Route>
 
             <Route exact path ="/myroutines/">
-                <MyRoutines token={token}></MyRoutines>
+                <MyRoutines token={token} user={user}></MyRoutines>
             </Route>
 
             <Route exact path ="/activities/">

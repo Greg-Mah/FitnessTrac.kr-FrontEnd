@@ -9,6 +9,9 @@ const Routines = (props) =>
     const token=props.token;
     const user=props.user;
     const [routines,setRoutines]=useState([]);
+    const [updater,setUpdater]=useState([]);
+
+
 
     useEffect(()=>
     {
@@ -20,12 +23,13 @@ const Routines = (props) =>
         {
             setRoutines(response);
         });
-    },[])
+    },[updater])
+
+
     return <>
     {routines.map((routine)=>
     {
-        console.log(routine);
-        return <Routine key={routine.id} routine={routine} token={token} user={user}></Routine>;
+        return <Routine key={routine.id} routine={routine} token={token} user={user} setUpdater={setUpdater}></Routine>;
     })}
     </>;
 }

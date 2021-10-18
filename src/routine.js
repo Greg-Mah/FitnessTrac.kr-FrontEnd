@@ -1,10 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Activity from './activity';
+import APIFetch from './api';
 
-const Routine = (props) => {
+import RoutineForm from './routineForm';
+
+
+const Routine = (props) => 
+{
     const routine=props.routine;
     const token=props.token;
+    const user=props.user;
+    const setUpdater=props.setUpdater;
+    
+    const [showForm,setShowForm]=useState(false);
 
+    useEffect(()=>
+    {
+        setUpdater([]);
+    },
+    [showForm])
 
 
     return <>
@@ -14,8 +28,30 @@ const Routine = (props) => {
     <h3>Activities:</h3>
     {routine.activities.map((activity)=>
     {
-        return <Activity activity={activity} token={token}></Activity>;
+        return <Activity key={activity.id} activity={activity} token={token}></Activity>;
     })}
+    {user.id===routine.id?
+    <>
+        <button onClick={()=>
+        {
+            setShowForm(!showForm);
+        }}>Edit this routine</button>
+        <button onClick={()=>
+        {
+            APIFetch(
+            {
+                url:`routines/${routine.id}/`,
+                method:`DELETE`,
+                token:token,
+            }
+            ).then(()=>
+            {
+                setUpdater([]);
+            })
+        }}>Delete this routine</button>
+        {showForm?
+        <RoutineForm token={token} user={user} routine={routine} setShowForm={setShowForm}></RoutineForm>:null}
+    </>:null}
     </>;
 }
 

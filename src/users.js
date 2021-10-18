@@ -5,7 +5,7 @@ const Users = (props) =>
 {
     const setToken=props.setToken;
     const user=props.user;
-    const setUser=props.setUser
+    const setUser=props.setUser;
 
     
 

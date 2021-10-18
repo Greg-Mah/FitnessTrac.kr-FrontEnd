@@ -13,11 +13,12 @@ const MyRoutines = (props) =>
     {
         APIFetch(
         {
-            url:"routines/myRoutines/",
+            url:`users/${user.name}/routines`,
             method:"GET",
             token:token
         }).then((response)=>
         {
+            console.log(response);
             setRoutines(response);
         });
     },[showForm])
