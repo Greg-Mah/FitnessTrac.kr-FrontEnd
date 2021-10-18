@@ -1,0 +1,107 @@
+*
+{
+    box-sizing: border-box;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:flex-start;
+    font-family: 'Times New Roman', Times, serif;
+}
+input
+{
+    flex-basis: 100%;
+    padding:5px;
+}
+
+h2
+{
+    margin-top: 0;
+}
+
+h2, p
+{
+    flex-basis: 100%;
+}
+title, style, script
+{
+    display:none;
+}
+
+a
+{
+    color:rgb(0,0,0);
+    text-decoration: none;
+}
+
+
+.NavBar *
+{
+    background-color: rgb(225,225,225);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#app
+{
+    background-color: rgb(200,200,200);
+    border-radius: 30px;
+    flex-basis:100%;
+    padding:30px;
+}
+
+body
+{
+    flex-basis: 100%;
+}
+
+form
+{
+    background-color: rgb(150,150,150);
+    border-radius: 20px;
+    margin:10px;
+    padding:20px;
+    flex-basis: 40%;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+form div
+{
+    justify-content: flex-start;
+}
+
+input[type="checkbox"]
+{
+    flex-basis: 0%;
+}
+
+button
+{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.Activity, .Routine
+{
+    flex-basis: 90%;
+    background-color:rgb(225,225,225);
+    margin:10px;
+    border-radius: 5px;
+    flex-shrink: 1;
+}
+
+.Activity *,.Routine *
+{
+    flex-basis: 100%;
+    background-color:rgb(255,255,255);
+    margin:10px;
+    border-radius: 5px;
+}
+
+h1
+{
+    flex-basis: 100%;
+}
+

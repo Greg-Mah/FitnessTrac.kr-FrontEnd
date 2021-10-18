@@ -7,6 +7,7 @@ import Home from './home';
 import MyRoutines from './myRoutines';
 import NavBar from './navBar';
 import Routines from './routines';
+import './style.css';
 
 import Users from './users';
 
@@ -14,7 +15,7 @@ const App = () => {
     const [token,setToken]=useState(localStorage.getItem("token")||"");
     const [user,setUser]=useState(
     {
-        id:localStorage.getItem("id"),
+        id:Number(localStorage.getItem("id")),
         name:localStorage.getItem("username")
     }||null);
 

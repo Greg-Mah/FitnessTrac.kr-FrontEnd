@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Activity from './activity';
+import ActivityForm from './activityForm';
 import APIFetch from './api';
 
 import RoutineForm from './routineForm';
+import Routine_ActivitiesForm from './routine_activitiesForm';
 
 
 const Routine = (props) => 
@@ -10,31 +12,46 @@ const Routine = (props) =>
     const routine=props.routine;
     const token=props.token;
     const user=props.user;
-    const setUpdater=props.setUpdater;
     
-    const [showForm,setShowForm]=useState(false);
+    const [showRoutineForm,setShowRoutineForm]=useState(false);
+    const [showActivityForm,setShowActivityForm]=useState(false);
+    const [showRoutineActivityForm,setShowRoutineActivityForm]=useState(false);
 
     useEffect(()=>
     {
-        setUpdater([]);
+        console.log(routine);
+        console.log(user);
+
     },
-    [showForm])
+    [showRoutineForm])
 
 
-    return <>
+    return <div className="Routine">
     <h2>{routine.name}</h2>
     <h3>By:{routine.creatorName}</h3>
     <h3>Goal:{routine.goal}</h3>
     <h3>Activities:</h3>
     {routine.activities.map((activity)=>
     {
-        return <Activity key={activity.id} activity={activity} token={token}></Activity>;
+        return <>
+             {user.id===routine.creatorId?
+             <>
+                <button onClick={()=>
+                {
+                    setShowRoutineActivityForm(!showRoutineActivityForm);
+                }}>Edit this activity</button>
+                {showRoutineActivityForm?
+                <Routine_ActivitiesForm key={activity.routineActivityId} token={token} activity={activity}></Routine_ActivitiesForm>:null}
+            </>:null}
+            
+            <Activity key={activity.id} activity={activity} token={token}></Activity>
+        </>;
     })}
-    {user.id===routine.id?
+    {user.id===routine.creatorId?
     <>
         <button onClick={()=>
         {
-            setShowForm(!showForm);
+            setShowRoutineForm(!showRoutineForm);
         }}>Edit this routine</button>
         <button onClick={()=>
         {
@@ -46,13 +63,20 @@ const Routine = (props) =>
             }
             ).then(()=>
             {
-                setUpdater([]);
+
             })
         }}>Delete this routine</button>
-        {showForm?
-        <RoutineForm token={token} user={user} routine={routine} setShowForm={setShowForm}></RoutineForm>:null}
+        <button onClick={()=>
+        {
+            setShowActivityForm(!showActivityForm);
+        }}>Add activities</button>
+        {showRoutineForm?
+        <RoutineForm token={token} routine={routine} setShowForm={setShowRoutineForm}></RoutineForm>:null}
+        {showActivityForm?
+        <ActivityForm token={token} routine={routine} setShowForm={setShowActivityForm}></ActivityForm>:null}
+
     </>:null}
-    </>;
+    </div>;
 }
 
 export default Routine;
